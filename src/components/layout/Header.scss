@@ -1,20 +1,62 @@
 .header {
   nav.nav {
-    @include size(100%, 70px);
-    height: 6.5vw;
-    background-color: red;
+    height: 3.7vw;
+    background-color: #fff;
+    padding: 0 3vw;
+    position: relative;
+
     @include flexbox($center, $center);
     .nav-block {
       @include flexbox($between, $center, null);
       width: 100%;
 
       .header-logo {
-        @include bg-img("/assets/img/common/logo.svg", 100%, center, null);
-        @include size(9vw, 3vw);
+        @include bg-img("/assets/img/common/logo.svg", contain, center, null);
+        @include size(5vw, 2vw);
       }
 
       .nav-list {
         @include flexbox($start, $center);
+
+        .nav-item {
+          &.search-btn {
+            @include bg-img(
+              "/assets/img/common/ic-search-tab.svg",
+              contain,
+              center,
+              null
+            );
+            @include size(1.4vw, 1.4vw);
+          }
+          > a {
+            font-size: clamp(14px, 0.8vw, 16px);
+            padding: 1vw;
+
+            &:hover {
+              + .submenu {
+                @include flexbox($start, $start);
+                flex-direction: column;
+                flex-wrap: wrap;
+                position: absolute;
+                height: 16vw;
+                max-height: 16vw;
+                background-color: #fff;
+                top: 3.7vw;
+                width: 100%;
+                left: 0;
+                padding: 2vw 30vw;
+                z-index: 9;
+
+                li {
+                  padding: 0.6vw;
+                  a {
+                    @include text-style(#000, 22px, 400, null, null);
+                  }
+                }
+              }
+            }
+          }
+        }
 
         .submenu {
           display: none;

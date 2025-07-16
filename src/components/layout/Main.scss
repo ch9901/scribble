@@ -1,0 +1,14 @@
+main {
+  padding: 86px 30px;
+
+  .flex {
+    display: flex;
+    &.column {
+      flex-direction: column;
+    }
+  }
+
+  .grid {
+    display: grid;
+  }
+}

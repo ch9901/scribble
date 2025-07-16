@@ -1,0 +1,52 @@
+.title-block {
+  grid-template-columns: 1fr 1fr;
+  justify-content: $end;
+  align-items: $end;
+  .mainTitle {
+    @include text-style(#000, clamp(32px, 3.2vw, 54px), 800, null, null);
+
+    @font-face {
+      font-family: "Pretendard-Regular";
+      src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+        format("woff");
+      font-weight: 400;
+      font-style: normal;
+    }
+    position: relative;
+    width: fit-content;
+
+    &::after {
+      content: "";
+      @include flexbox();
+      @include bg-img(
+        "/assets/img/common/ic-outlink-circle-black.png",
+        contain,
+        center,
+        null
+      );
+      @include size(1.6vw, 1.6vw);
+      position: absolute;
+      bottom: 1.4vw;
+      right: -2.2vw;
+    }
+
+    &:hover {
+      &::after {
+        @include bg-img(
+          "/assets/img/common/ic-outlink-circle-green-hover.png",
+          contain,
+          center,
+          null
+        );
+      }
+    }
+  }
+
+  .nation-block {
+    grid-template-columns: 1fr 1fr;
+
+    span {
+      @include text-style(#000, 1.4vw, 600, null, -1.2px);
+    }
+  }
+}
