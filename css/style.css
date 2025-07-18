@@ -1,0 +1,241 @@
+@charset "UTF-8";
+.blind {
+  position: absolute;
+  /* 요소의 위치를 절대 위치로 설정합니다. */
+  width: 1px;
+  /* 요소의 가로 너비를 1px로 설정합니다. */
+  height: 1px;
+  /* 요소의 세로 높이를 1px로 설정합니다. */
+  overflow: hidden;
+  /* 내용이 요소의 크기를 벗어나면 숨깁니다. */
+  clip: rect(0, 0, 0, 0);
+  /* 요소의 내용을 화면에서 완전히 숨깁니다. */
+  margin: -1;
+  /* 요소의 마진을 -1로 설정하여, 요소 자체를 화면에서 숨깁니다. */
+}
+
+header {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 33px;
+  filter: blur(0.8);
+  display: flex;
+  z-index: 9;
+}
+header .logo {
+  width: 12%;
+}
+header .logo a {
+  background-size: 358px 319px;
+  background-image: url("../common/img/sprite.png");
+  background-position: 0 -307px;
+  width: 119px;
+  height: 12px;
+  display: block;
+}
+header .item {
+  color: #fff;
+  font-size: 12.8px;
+  font-weight: 800;
+  cursor: pointer;
+}
+header .nav-block {
+  width: 66.5%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+header .nav-block .line {
+  background-color: #fff;
+  position: absolute;
+  height: 3px;
+  transition: width 0.3s, left 0.3s ease 0s;
+  width: 50px;
+  top: 15px;
+  left: 0;
+}
+header .nav-block .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+header .nav-block .nav .item:hover {
+  position: relative;
+}
+header .etc-block .etc {
+  display: flex;
+  gap: 20px;
+}
+header .etc-block .etc .etc-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+header .etc-block .etc .etc-list.file-dnd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+header .etc-block .etc .etc-list.file-dnd::before {
+  content: "";
+  display: block;
+  background-size: 358px 319px;
+  background-image: url("../common/img/sprite.png");
+  background-position: -334px -216px;
+  width: 10px;
+  height: 10px;
+}
+header .etc-block .etc .etc-list.item::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 2px;
+  background-color: #fff;
+  display: block;
+  border-radius: 50%;
+}
+header .etc-block .etc .etc-list:nth-child(3)::after {
+  display: none;
+}
+header .etc-block .etc .etc-list.lang-block {
+  position: relative;
+}
+header .etc-block .etc .etc-list.lang-block::before {
+  content: "";
+  height: 10px;
+  width: 1px;
+  background-color: #fff;
+  position: absolute;
+  left: -10px;
+  display: block;
+}
+header .etc-block .etc .etc-list.lang-block::after {
+  content: "";
+  background-size: 358px 319px;
+  background-image: url("../common/img/sprite.png");
+  background-position: -344px -254px;
+  width: 6px;
+  height: 4px;
+  display: block;
+  top: 50%;
+  position: absolute;
+  right: -10px;
+  transform: translateY(-50%);
+}
+header .etc-block .etc .etc-list .lang-select-button {
+  all: unset;
+  cursor: pointer;
+  color: #fff;
+  font-size: 12.8px;
+  font-weight: 800;
+}
+header .etc-block .etc .etc-list .lang-select-box {
+  position: absolute;
+  top: 20px;
+  border-color: #444;
+  border-top: 2px solid #ccc;
+  background-color: #222;
+  padding: 10px 20px;
+  padding-left: 18px;
+}
+header .etc-block .etc .etc-list .lang-select-box li a {
+  color: #fff;
+  font-size: 12px;
+  line-height: 26px;
+  text-decoration: none;
+}
+
+section {
+  position: relative;
+}
+
+.fixed-area .intro-dnd {
+  position: fixed;
+  z-index: 20;
+  width: 188px;
+  height: 188px;
+  background-color: red;
+  bottom: 18%;
+  left: 18%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: start;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+.fixed-area .intro-dnd .intro-tit {
+  margin: 0 auto;
+  font-weight: 700;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.fixed-area .intro-dnd .intro-tit::after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-size: 358px 319px;
+  background-image: url("../common/img/sprite.png");
+  background-position: -334px -164px;
+  width: 20px;
+  height: 20px;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.video-area {
+  height: 100svh;
+  overflow: hidden;
+}
+.video-area video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100svh;
+}
+
+.text-area {
+  position: absolute;
+  top: 46%;
+  left: 18%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+}
+.text-area .video-title {
+  color: #fff;
+  font-size: 65px;
+  line-height: 1.14em;
+  font-weight: 900;
+  letter-spacing: -4px;
+}
+.text-area .video-desc {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.14em;
+  font-weight: 400;
+  letter-spacing: -0.8px;
+}
+
+footer {
+  position: fixed;
+  right: 2%;
+  bottom: 4%;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+}/*# sourceMappingURL=style.css.map */

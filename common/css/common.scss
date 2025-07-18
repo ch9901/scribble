@@ -1,0 +1,62 @@
+// 플렉스박스
+@mixin flexbox($justify: center, $align: center, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+$center: center;
+$start: flex-start;
+$end: flex-end;
+$normal: normal;
+$between: space-between;
+$around: space-around;
+$evenly: space-evenly;
+$stretch: stretch;
+
+// 테두리라인
+@mixin border($border, $radius, $backcolor) {
+  border: $border;
+  border-radius: $radius;
+  background: $backcolor;
+}
+
+// 사이즈
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// 백그라운드 이미지
+@mixin bg-img($image, $size, $position, $bg-color) {
+  background-image: url($image);
+  background-size: $size;
+  background-position: $position;
+  background-color: $bg-color;
+  background-repeat: no-repeat;
+}
+
+// 폰트 스타일 지정
+@mixin text-style(
+  $color,
+  $font-size,
+  $font-weight,
+  $line-height,
+  $letter-spacing
+) {
+  color: $color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+// 말줄임 처리 (2줄)
+@mixin text-ellipsis($line) {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
