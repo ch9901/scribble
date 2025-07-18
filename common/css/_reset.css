@@ -34,11 +34,6 @@ table {
   border-spacing: 0;
 }
 
-* {
-  box-sizing: border-box;
-  font-family: Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
-}
-
 button {
   all: unset;
   cursor: pointer;

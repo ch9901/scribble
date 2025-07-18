@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/roboto");
+
 // 플렉스박스
 @mixin flexbox($justify: center, $align: center, $gap: 0) {
   display: flex;
@@ -59,4 +61,9 @@ $stretch: stretch;
   -webkit-line-clamp: $line;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", "Noto Sans", sans-serif;
 }
