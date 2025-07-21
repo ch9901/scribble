@@ -1,6 +1,15 @@
 @charset "UTF-8";
 @import url("https://fonts.cdnfonts.com/css/roboto");
 @import url("https://fonts.cdnfonts.com/css/roboto");
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", "Noto Sans", sans-serif;
+}
+
+.fp-watermark {
+  display: none !important;
+}
+
 .blind {
   position: absolute;
   /* 요소의 위치를 절대 위치로 설정합니다. */
@@ -18,12 +27,32 @@
 
 header {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
   padding: 33px;
   filter: blur(0.8);
   display: flex;
   z-index: 9;
+}
+header.section2 .item,
+header.section2 .etc-block .etc .etc-list .lang-select-button, header.section3 .item,
+header.section3 .etc-block .etc .etc-list .lang-select-button {
+  color: #000;
+}
+header.section2 .logo a, header.section3 .logo a {
+  background-position: -123px -307px;
+}
+header.section2 .etc-block .etc .etc-list.file-dnd::before, header.section3 .etc-block .etc .etc-list.file-dnd::before {
+  background-position: -334px -202px;
+}
+header.section2 .etc-block .etc .etc-list.lang-block::after, header.section3 .etc-block .etc .etc-list.lang-block::after {
+  background-position: -350px -242px;
+}
+header.section2 .etc-block .etc .etc-list.lang-block::before,
+header.section2 .etc-block .etc .etc-list.item::after,
+header.section2 .nav-block .line, header.section3 .etc-block .etc .etc-list.lang-block::before,
+header.section3 .etc-block .etc .etc-list.item::after,
+header.section3 .nav-block .line {
+  background-color: #000;
 }
 header .logo {
   width: 12%;
@@ -32,7 +61,7 @@ header .logo a {
   background-size: 358px 319px;
   background-image: url("../common/img/sprite.png");
   background-position: 0 -307px;
-  width: 119px;
+  width: 118px;
   height: 12px;
   display: block;
 }
@@ -165,7 +194,7 @@ section {
   width: 188px;
   height: 188px;
   background-color: rgba(255, 255, 255, 0.2);
-  bottom: 18%;
+  bottom: 16%;
   left: 18%;
   border-radius: 50%;
   display: flex;
@@ -249,6 +278,19 @@ section {
   transform: translateX(-50%);
 }
 
+#fullpage + .fixed-area {
+  background-color: red;
+}
+#fullpage.section1 + .fixed-area .inquiry {
+  opacity: 0;
+}
+#fullpage.section2 + .fixed-area .intro-dnd, #fullpage.section3 + .fixed-area .intro-dnd {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#fullpage.section2 + .fixed-area .intro-dnd:hover, #fullpage.section3 + .fixed-area .intro-dnd:hover {
+  background-color: #d60103;
+}
+
 .section-1 .text-area {
   position: absolute;
   top: 46%;
@@ -284,10 +326,12 @@ section {
   height: 100svh;
 }
 
-.section-2 .text-area {
+.section-2 .text-area,
+.section-3 .text-area,
+.section-4 .text-area {
   position: absolute;
   left: 4%;
-  top: 47%;
+  top: 48%;
   transform: translateY(-50%);
   color: #000;
   font-size: 48px;
@@ -295,18 +339,24 @@ section {
   line-height: 140%;
   letter-spacing: -2px;
 }
-.section-2 .text-area strong {
+.section-2 .text-area strong,
+.section-3 .text-area strong,
+.section-4 .text-area strong {
   font-weight: 700;
 }
-.section-2 .about {
+.section-2 .about,
+.section-3 .about,
+.section-4 .about {
   font-weight: 600;
-  color: #000;
+  color: inherit;
   font-size: 18px;
   letter-spacing: -0.7px;
   position: relative;
   text-decoration: none;
 }
-.section-2 .about::after {
+.section-2 .about::after,
+.section-3 .about::after,
+.section-4 .about::after {
   content: "";
   width: 100%;
   height: 2px;
@@ -315,24 +365,88 @@ section {
   position: absolute;
   bottom: 0;
 }
-.section-2 .company-history {
+.section-2 .about:hover::after,
+.section-3 .about:hover::after,
+.section-4 .about:hover::after {
+  animation: aboutUnderLine 0.5s forwards;
+}
+@keyframes aboutUnderLine {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.section-2 .company-history,
+.section-3 .company-history,
+.section-4 .company-history {
   position: absolute;
   left: 40%;
   top: 47%;
   transform: translateY(-50%);
 }
-.section-2 .company-history li {
+.section-2 .company-history::after,
+.section-3 .company-history::after,
+.section-4 .company-history::after {
+  content: "";
+  display: block;
+  width: 240%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 13%;
+  left: -160%;
+}
+.section-2 .company-history li,
+.section-3 .company-history li,
+.section-4 .company-history li {
   margin-bottom: 20px;
 }
-.section-2 .company-history li .list-tit {
+.section-2 .company-history li .list-tit,
+.section-3 .company-history li .list-tit,
+.section-4 .company-history li .list-tit {
   font-size: 13px;
   font-weight: 100;
 }
-.section-2 .company-history li .num {
+.section-2 .company-history li .num,
+.section-3 .company-history li .num,
+.section-4 .company-history li .num {
   color: #000;
   font-size: 55px;
   font-weight: 100;
   line-height: 140%;
+}
+.section-2 .video-area,
+.section-3 .video-area,
+.section-4 .video-area {
+  width: 560px;
+  height: 560px;
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.section-2 .video-area video,
+.section-3 .video-area video,
+.section-4 .video-area video {
+  width: 100%;
+}
+
+.section-3 .video-area,
+.section-4 .video-area {
+  width: 996px;
+  right: 0;
+}
+
+.section-4 {
+  background-color: #000;
+}
+.section-4 .text-area {
+  color: #fff;
+}
+.section-4 .text-area .about::after {
+  background: #fff;
 }
 
 footer {
@@ -342,4 +456,7 @@ footer {
   color: #fff;
   font-size: 12px;
   font-weight: 400;
+}
+footer.section2 .copyright, footer.section3 .copyright {
+  color: #000;
 }/*# sourceMappingURL=style.css.map */

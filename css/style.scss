@@ -1,6 +1,10 @@
 @use "../common/css/common" as *;
 @import url("https://fonts.cdnfonts.com/css/roboto");
 
+.fp-watermark {
+  display: none !important;
+}
+
 .blind {
   position: absolute;
   /* 요소의 위치를 절대 위치로 설정합니다. */
@@ -18,13 +22,40 @@
 
 header {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
   padding: 33px;
   filter: blur(0.8);
   display: flex;
-  // justify-content: space-between;
   z-index: 9;
+
+  &.section2,
+  &.section3 {
+    .item,
+    .etc-block .etc .etc-list .lang-select-button {
+      color: #000;
+    }
+
+    .logo {
+      a {
+        background-position: -123px -307px;
+      }
+    }
+
+    .etc-block .etc .etc-list.file-dnd::before {
+      background-position: -334px -202px;
+    }
+
+    .etc-block .etc .etc-list.lang-block::after {
+      background-position: -350px -242px;
+    }
+
+    .etc-block .etc .etc-list.lang-block::before,
+    .etc-block .etc .etc-list.item::after,
+    .nav-block .line {
+      background-color: #000;
+    }
+  }
+
   .logo {
     width: 12%;
 
@@ -32,7 +63,7 @@ header {
       background-size: 358px 319px;
       background-image: url("../common/img/sprite.png");
       background-position: 0 -307px;
-      width: 119px;
+      width: 118px;
       height: 12px;
       display: block;
     }
@@ -191,7 +222,7 @@ section {
     width: 188px;
     height: 188px;
     background-color: #ffffff33;
-    bottom: 18%;
+    bottom: 16%;
     left: 18%;
     border-radius: 50%;
     display: flex;
@@ -282,6 +313,31 @@ section {
   }
 }
 
+#fullpage {
+  + .fixed-area {
+    background-color: red;
+  }
+
+  &.section1 {
+    + .fixed-area {
+      .inquiry {
+        opacity: 0;
+      }
+    }
+  }
+  &.section2,
+  &.section3 {
+    + .fixed-area {
+      .intro-dnd {
+        background-color: rgba(0, 0, 0, 0.2);
+        &:hover {
+          background-color: #d60103;
+        }
+      }
+    }
+  }
+}
+
 .section-1 {
   .text-area {
     position: absolute;
@@ -320,11 +376,13 @@ section {
   }
 }
 
-.section-2 {
+.section-2,
+.section-3,
+.section-4 {
   .text-area {
     position: absolute;
     left: 4%;
-    top: 47%;
+    top: 48%;
     transform: translateY(-50%);
     color: #000;
     font-size: 48px;
@@ -338,7 +396,7 @@ section {
 
   .about {
     font-weight: 600;
-    color: #000;
+    color: inherit;
     font-size: 18px;
     letter-spacing: -0.7px;
     position: relative;
@@ -352,6 +410,19 @@ section {
       position: absolute;
       bottom: 0;
     }
+
+    &:hover::after {
+      animation: aboutUnderLine 0.5s forwards;
+    }
+
+    @keyframes aboutUnderLine {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+    }
   }
 
   .company-history {
@@ -359,6 +430,16 @@ section {
     left: 40%;
     top: 47%;
     transform: translateY(-50%);
+    &::after {
+      content: "";
+      display: block;
+      width: 240%;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 13%;
+      left: -160%;
+    }
     li {
       margin-bottom: 20px;
       .list-tit {
@@ -373,7 +454,43 @@ section {
       }
     }
   }
+
+  .video-area {
+    width: 560px;
+    height: 560px;
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    video {
+      width: 100%;
+    }
+  }
 }
+
+.section-3,
+.section-4 {
+  .video-area {
+    width: 996px;
+    right: 0;
+  }
+}
+
+.section-4 {
+  background-color: #000;
+
+  .text-area {
+    color: #fff;
+    .about {
+      // color: #fff;
+
+      &::after {
+        background: #fff;
+      }
+    }
+  }
+}
+
 footer {
   position: fixed;
   right: 2%;
@@ -381,4 +498,11 @@ footer {
   color: #fff;
   font-size: 12px;
   font-weight: 400;
+
+  &.section2,
+  &.section3 {
+    .copyright {
+      color: #000;
+    }
+  }
 }

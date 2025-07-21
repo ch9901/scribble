@@ -7,13 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollHorizontally: true,
     onLeave: function (origin, destination, direction) {
       const header = document.querySelector("header");
+      const footer = document.querySelector("footer");
+      const fullpage = document.querySelector("#fullpage");
 
-      if (destination.index === 1) {
-        // 두 번째 섹션에 진입하면
-        header.classList.add("section2");
-      } else {
-        header.classList.remove("dark");
-      }
+      header.className = `section${Number(destination.index) + 1}`;
+      footer.className = `section${Number(destination.index) + 1}`;
+      fullpage.className = `fullpage-wrapper section${
+        Number(destination.index) + 1
+      }`;
     },
   });
 });
